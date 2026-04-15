@@ -1,8 +1,8 @@
 from collections import defaultdict
 from dataclasses import dataclass
 
-from prosperity3bt.datamodel import Symbol, Trade
-from prosperity3bt.file_reader import FileReader
+from prosperity4bt.datamodel import Symbol, Trade
+from prosperity4bt.file_reader import FileReader
 
 LIMITS = {
     "RAINFOREST_RESIN": 50,

@@ -5,8 +5,8 @@ from io import StringIO
 from IPython.utils.io import Tee
 from tqdm import tqdm
 
-from prosperity3bt.data import LIMITS, BacktestData, read_day_data
-from prosperity3bt.datamodel import (
+from prosperity4bt.data import LIMITS, BacktestData, read_day_data
+from prosperity4bt.datamodel import (
     ConversionObservation,
     Listing,
     Observation,
@@ -16,8 +16,8 @@ from prosperity3bt.datamodel import (
     Trade,
     TradingState,
 )
-from prosperity3bt.file_reader import FileReader
-from prosperity3bt.models import (
+from prosperity4bt.file_reader import FileReader
+from prosperity4bt.models import (
     ActivityLogRow,
     BacktestResult,
     MarketTrade,
@@ -319,8 +319,8 @@ def run_backtest(
 ) -> BacktestResult:
     data = read_day_data(file_reader, round_num, day_num, no_names)
 
-    os.environ["PROSPERITY3BT_ROUND"] = str(round_num)
-    os.environ["PROSPERITY3BT_DAY"] = str(day_num)
+    os.environ["PROSPERITY4BT_ROUND"] = str(round_num)
+    os.environ["PROSPERITY4BT_DAY"] = str(day_num)
 
     trader_data = ""
     state = TradingState(
