@@ -29,10 +29,18 @@ class SandboxLogRow:
             },
             option=orjson.OPT_APPEND_NEWLINE | orjson.OPT_INDENT_2,
         ).decode("utf-8")
+    
+    def to_dict(self):
+        return {
+            "sandboxLog": self.sandbox_log,
+            "lambdaLog": self.lambda_log,
+            "timestamp": self.timestamp
+        }
 
 
 @dataclass
 class ActivityLogRow:
+    HEADER = 'day;timestamp;product;bid_price_1;bid_volume_1;bid_price_2;bid_volume_2;bid_price_3;bid_volume_3;ask_price_1;ask_volume_1;ask_price_2;ask_volume_2;ask_price_3;ask_volume_3;mid_price;profit_and_loss'
     columns: list[Any]
 
     @property
@@ -71,20 +79,19 @@ class TradeRow:
         )
 
     def __str__(self) -> str:
-        return (
-            "  "
-            + f"""
-  {{
-    "timestamp": {self.trade.timestamp},
-    "buyer": "{self.trade.buyer}",
-    "seller": "{self.trade.seller}",
-    "symbol": "{self.trade.symbol}",
-    "currency": "XIRECS",
-    "price": {self.trade.price},
-    "quantity": {self.trade.quantity},
-  }}
-        """.strip()
-        )
+        return f"  {self.to_dict()}"
+
+    
+    def to_dict(self):
+        return {
+            "timestamp": self.trade.timestamp,
+            "buyer": self.trade.buyer,
+            "seller": self.trade.seller,
+            "symbol": self.trade.symbol,
+            "currency": "XIRECS",
+            "price": float(self.trade.price),
+            "quantity": self.trade.quantity,
+        }
 
 
 @dataclass
