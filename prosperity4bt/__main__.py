@@ -179,7 +179,7 @@ def cli(
     algorithm: Annotated[Path, Argument(help="Path to the Python file containing the algorithm to backtest.", show_default=False, exists=True, file_okay=True, dir_okay=False, resolve_path=True)],
     days: Annotated[list[str], Argument(help="The days to backtest on. <round>-<day> for a single day, <round> for all days in a round.", show_default=False)],
     merge_pnl: Annotated[bool, Option("--merge-pnl", help="Merge profit and loss across days.")] = True,
-    vis: Annotated[bool, Option("--vis", help="Open backtest results in https://jmerle.github.io/imc-prosperity-3-visualizer/ when done.")] = False,
+    vis: Annotated[bool, Option("--vis", help="Open backtest results in https://github.com/kevin-fu1/imc-prosperity-4-visualizer when done.")] = False,
     out: Annotated[Optional[Path], Option(help="File to save output log to (defaults to backtests/<timestamp>.log).", show_default=False, dir_okay=False, resolve_path=True)] = None,
     no_out: Annotated[bool, Option("--no-out", help="Skip saving output log.")] = False,
     data: Annotated[Optional[Path], Option(help="Path to data directory. Must look similar in structure to https://github.com/shh1v/imc-prosperity-4-backtester/tree/master/prosperity4bt/resources.", show_default=False, exists=True, file_okay=False, dir_okay=True, resolve_path=True)] = None,
